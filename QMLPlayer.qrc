@@ -50,9 +50,6 @@
         <file>qml/weather/images/dress.png</file>
         <file>qml/weather/images/humidity.png</file>
         <file>qml/weather/images/pm2.5.png</file>
-        <file>qml/calendar/Events.qml</file>
-        <file>qml/calendar/main.qml</file>
-        <file>qml/calendar/Today.qml</file>
         <file>qml/calendar/images/bg.png</file>
         <file>qml/calendar/images/events/1.png</file>
         <file>qml/calendar/images/events/2.png</file>
@@ -81,5 +78,8 @@
         <file>qml/countdown/images/start.png</file>
         <file>qml/housecontrol/App.qml</file>
         <file>qml/weather/weather.qml</file>
+        <file>qml/calendar/main.qml</file>
+        <file>qml/calendar/Today.qml</file>
+        <file>qml/calendar/Events.qml</file>
     </qresource>
 </RCC>

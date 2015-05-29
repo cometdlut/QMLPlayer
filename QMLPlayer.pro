@@ -18,8 +18,8 @@ HEADERS += \
     src/hidapi.h \
     src/event.h \
     src/qtquickcontrolsapplication.h \
-    src/sqleventmodel.h \
-    src/csingleton.h
+    src/csingleton.h \
+    src/sqleventmodel.h
 
 SOURCES += \
     src/main.cpp\
@@ -27,8 +27,8 @@ SOURCES += \
     src/uartthread.cpp \
     src/parsedata.cpp \
     src/event.cpp \
-    src/sqleventmodel.cpp \
-    src/csingleton.cpp
+    src/csingleton.cpp \
+    src/sqleventmodel.cpp
 
 RESOURCES += \
     QMLPlayer.qrc

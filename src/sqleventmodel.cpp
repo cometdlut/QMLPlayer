@@ -31,7 +31,6 @@ void SqlEventModel::createConnection()
     query.exec("insert into Event values('sing', '2015-05-15', 57600, '2015-05-15', 63000, 12)");
     query.exec("insert into Event values('smoking', '2015-05-15', 39600, '2015-05-15', 576000, 13)");
     query.exec("insert into Event values('airplane', '2015-05-15', 57600, '2015-05-15', 63000, 14)");
-    query.exec("insert into Event values('video', '2015-05-15', 57600, '2015-05-15', 63000, 15)");
 
     query.exec("insert into Event values('flower', '2015-05-24', 32400, '2015-05-29', 61200, 3)");
     query.exec("insert into Event values('airplane', '2015-05-28', 57600, '2015-05-29', 63000, 14)");
@@ -39,15 +38,15 @@ void SqlEventModel::createConnection()
     query.exec("insert into Event values('hotel', '2015-05-29', 57600, '2015-05-29', 63000, 6)");
     query.exec("insert into Event values('hairdressing', '2015-06-01', 36000, '2015-06-01', 39600, 5)");
 
-    QSqlQuery queryAll("SELECT * FROM Event");
-    while (queryAll.next()) {
-        qDebug() << queryAll.value("name")        << ":"
-                 << queryAll.value("startDate")   << ":"
-                 << queryAll.value("startTime")   << ":"
-                 << queryAll.value("endDate")     << ":"
-                 << queryAll.value("endTime")     << ":"
-                 << queryAll.value("imageNum");
-    }
+//    QSqlQuery queryAll("SELECT * FROM Event");
+//    while (queryAll.next()) {
+//        qDebug() << queryAll.value("name")        << ":"
+//                 << queryAll.value("startDate")   << ":"
+//                 << queryAll.value("startTime")   << ":"
+//                 << queryAll.value("endDate")     << ":"
+//                 << queryAll.value("endTime")     << ":"
+//                 << queryAll.value("imageNum");
+//    }
     return;
 }
 
@@ -74,6 +73,8 @@ QList<QObject*> SqlEventModel::eventsForDate(const QDate &date)
         endDate.setTime(QTime(0, 0).addSecs(query.value("endTime").toInt()));
         event->setEndDate(endDate);
 
+        event->setNum(query.value("imageNum").toString());
+
         events.append(event);
     }
 
@@ -91,7 +92,7 @@ QString SqlEventModel::getImageNum(const QDate &date)
     QString imageNum;
     while (query.next()) {
         imageNum = query.value("imageNum").toString();
-        qDebug() << "imageNum:" << imageNum;
+        //qDebug() << "imageNum:" << imageNum;
     }
     return imageNum;
 }

@@ -10,7 +10,6 @@ Item {
     height: 100;
 
     property date sysDate;
-    property var i: 5;  // 星期，手动设置
 
     signal sigSetEvent();
 
@@ -54,47 +53,41 @@ Item {
             sysDate =  new Date();
             seconds.text = Qt.formatDateTime(sysDate, "ss");
             hour.text = Qt.formatDateTime(sysDate, "hh:mm");
-            weekdayE.text = getWeek();
-            weekdayC.text = Qt.formatDateTime(sysDate, "dddd");
+            weekdayE.text = Qt.formatDateTime(sysDate, "dddd");
+            weekdayC.text = getWeek();
         }
     }
     Text {
         id: weekdayE;
-        text: getWeek();
+        text: Qt.formatDateTime(sysDate, "dddd");
         color: "white";
         font { family: fontName.name; pixelSize: 18 }
         anchors.top: hour.top;
         anchors.right: parent.right;
         anchors.rightMargin: 30;
     }
-    function getWeek() {
-        var week;
-        if (Qt.formatDateTime(sysDate, "hhmmss") == "235959")
-        {
-            i++;
-            if (i == 7)
-                i = 1;
-        }
-        switch(i) {
-        case 1:  week = "Monday";    break;
-        case 2:  week = "Tuesday";   break;
-        case 3:  week = "Wednesday"; break;
-        case 4:  week = "Thursday";  break;
-        case 5:  week = "Friday";    break;
-        case 6:  week = "Saturday";  break;
-        case 7:  week = "Sunday";    break;
-        default: break;
-        }
-        return week;
-    }
     Text {
         id: weekdayC;
-        text: Qt.formatDateTime(sysDate, "dddd");
+        text: getWeek();
         color: "white";
         font { family: fontName.name; pixelSize: 18 }
         anchors.bottom: hour.bottom;
         anchors.right: parent.right;
         anchors.rightMargin: 30;
+    }
+    function getWeek() {
+        var week;
+        switch(Qt.formatDateTime(sysDate, "dddd")) {
+        case "Monday":    week = "星期一"; break;
+        case "Tuesday":   week = "星期二"; break;
+        case "Wednesday": week = "星期三"; break;
+        case "Thursday":  week = "星期四"; break;
+        case "Friday":    week = "星期五"; break;
+        case "Saturday":  week = "星期六"; break;
+        case "Sunday":    week = "星期日"; break;
+        default: break;
+        }
+        return week;
     }
     Text {
         id: lable;

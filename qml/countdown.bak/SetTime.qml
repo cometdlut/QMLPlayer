@@ -25,9 +25,6 @@ Canvas {
     property var curAngle: 0.0;
     property var varAngle: 0.0;
 
-    property var last : 0.0;
-    property var start : 0.0;
-    property var canvasGradientactive: false;
 
     FontLoader { id: fontName; source: "../Fonts/AgencyFB.ttf"; }
 
@@ -42,13 +39,12 @@ Canvas {
             //ctx.lineCap = "round";
 
             // Make canvas all white
-            //ctx.beginPath();
+            ctx.beginPath();
             ctx.clearRect(0, 0, width, height);
-            //ctx.fill();
+            ctx.fill();
 
             var len = 1000;
-            //var last = 0, start = 0;
-       /*
+            var last = 0, start = 0;
             while (Math.PI*last/len-Math.PI/2 <= lasAngle) {
                 last += len/2000;
 
@@ -61,17 +57,6 @@ Canvas {
             }
             if (lasAngle == -Math.PI/2)
                 ctx.clearRect(0, 0, width, height);
-        */
-
-            var gradient = ctx.createLinearGradient(0, 0, width, height);
-            gradient.addColorStop(0.0, Qt.rgba(1, 1, 0, 1));
-            gradient.addColorStop(1.0, Qt.rgba(0, 1, 1, 1));
-            ctx.strokeStyle = gradient;
-            ctx.beginPath();
-            ctx.arc(150, 150, 135,  -Math.PI/2, lasAngle, false);
-            ctx.stroke();
-
-            canvasGradienttimer.running = false;
         }
     }
     Canvas {
@@ -89,44 +74,16 @@ Canvas {
             ctx.beginPath();
             ctx.arc(r, r, r-1, -Math.PI/2, lasAngle, false);
             ctx.stroke();
-
-            //canvasGradienttimer.running = true;
         }
     }
 
-    Timer{
-        id:canvasGradienttimer;
-        interval: 200;
-        repeat: true;
-        onTriggered: {
-            //if(canvasGradientactive==true)
-            {
-                canvasGradient.requestPaint();
-            }
-        }
-    }
-/*
-    Timer{
-        id:canvasDragtimer;
-        interval: 100;
-        repeat: true;
-        onTriggered: {
-            if(canvasDragactive==true)
-            {
-                canvasDrag.requestPaint();
-            }
-        }
-    }
-*/
     MouseArea {
         id: slideArea;
         anchors.fill: parent;
 
         onPressed: {
             countDown.running = false;
-            releasedTimer.running = false;
             prsAngle = Math.atan(Math.abs(mouseX-r) / Math.abs(mouseY-r));
-            //canvasDragtimer.running = true;
 
         }
 
@@ -159,20 +116,15 @@ Canvas {
             {
                 lasAngle = Math.PI*3/2;
             }
-            else
-            if((lasAngle+Math.PI/2)<0)
-            {
-               lasAngle = -Math.PI/2;
-            }
 
             if (lasAngle+Math.PI/2 >= 0 && lasAngle+Math.PI/2 <= Math.PI*2)
             {
                 dragCircle.x = Math.sin(lasAngle+Math.PI/2)*r + r - 10;
                 dragCircle.y = r - Math.cos(lasAngle+Math.PI/2)*r - 10;
 
-                canvasDrag.requestPaint();
-                //canvasGradienttimer.running = false;
                 canvasGradient.requestPaint();
+                canvasDrag.requestPaint();
+
 
                 var temp,totalsec,secchange;
                 temp = (lasAngle+Math.PI/2)/Math.PI * 180;
@@ -218,9 +170,8 @@ Canvas {
             if (min > 0 || sec > 0) {
                 sigStartCountDown(min, sec);
                 countDown.running = true;
-
+                releasedTimer.running = true;
             }
-            releasedTimer.running = true;
         }
     }
 
@@ -258,9 +209,8 @@ Canvas {
                     if (min > 0 || sec > 0) {
                         sigStartCountDown(min, sec);
                         countDown.running = true;
-
+                        releasedTimer.running = true;
                     }
-                    releasedTimer.running = true;
                 }
             }
         }
@@ -298,22 +248,6 @@ Canvas {
             dragCircle.y = r - Math.cos(lasAngle+Math.PI/2)*r - 10;
             canvasGradient.requestPaint();
             canvasDrag.requestPaint();
-/*
-            var totalsec = min*60 + sec;
-            if(--totalsec<=0)
-            {
-                totalsec = 0;
-                countDown.stop();
-                sigTimeUp();
-            }
-
-            min = parseInt(totalsec/60);
-            sec = parseInt(totalsec - min*60);
-
-            if(min<10)  min = "0"+min;
-            if(sec<10)  sec = "0"+sec;
-            */
-
 
             sec -= 1;
             if (sec < 0 && min !=0) {
@@ -333,7 +267,6 @@ Canvas {
                 countDown.stop();
                 sigTimeUp();
             }
-
         }
     }
     Timer {

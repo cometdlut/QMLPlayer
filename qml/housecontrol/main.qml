@@ -4,11 +4,11 @@ import QtQuick.Controls.Styles 1.2
 import QtQuick.Layouts 1.1
 
 Item {
-    id: itemRoot;
-    width: 800;
-    height: 800;
-    smooth: true;
-    antialiasing: true;
+    id:itemRoot
+    width: 50
+    height: 50
+    smooth: true
+    antialiasing: true
 
     MultiPointTouchArea {
         id: touchArea
@@ -23,7 +23,19 @@ Item {
                 var point = touchPoints[i]
                 pressPos  = Qt.point(point.x, point.y)
             }
-            itemRoot.z = ++root.highestZ
+           itemRoot.z = ++root.highestZ
+
+            //点击弹出house ctrl List
+
+            if(housectrllist.visible==false) {
+                housectrllist.visible = true;
+            }
+            else {
+                housectrllist.visible = false;
+            }
+
+
+
         }
 
         onTouchUpdated: {
@@ -42,13 +54,22 @@ Item {
             }
             //itemRoot.z = 1;
         }
+
+
     }
 
-    Light {
-        id: light
-        visible: true;
+    Image {
+        id: houseimage;
+        anchors.fill: parent;
+        anchors.margins: 20;
+        source: "menu/home.png";
     }
 
-    Component.onCompleted: {
+    HouseCtrlList {
+        id:housectrllist;
+        x: 100
+        y: 100
+        visible: false;
     }
 }
+

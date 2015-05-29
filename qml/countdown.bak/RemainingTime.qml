@@ -36,10 +36,6 @@ Rectangle {
         source: "images/remainingtime.png";
     }
 
-
-
-
-
     Text {
         id: remainingTimeShow;
         anchors.verticalCenter: hourglassImage.verticalCenter;
@@ -52,17 +48,11 @@ Rectangle {
         MouseArea {
             id: remainingTimeText
             anchors.fill: parent;
-
             drag.target: remRoot;
-
             onReleased: {
                 sigSetTime();
             }
-
         }
-
-
-
     }
     Text {
         x: 290; y: 25;

@@ -92,34 +92,25 @@ Item {
 
     Rectangle {
         width: 400-3;
-        height: 30;
+        height: 33;
         x: 150;
         y: 190;
         z: -1;
-        color: "gray";
-        Image {
-            id: weekBackgrand;
-            source: "images/bg.png";
-            width: 400-3;
-            height: 30;
-//            x: 150;
-//            y: 190;
-//            z: -1;
-        }
+        color: "#363636";
     }
 
     Text {
         id: sunday
         text: "日";
         color: "white";
-        font { family: fontName.name; pixelSize: 14 }
+        font { family: fontName.name; pixelSize: 14; bold: true; }
         x: 173;
         y: 192;
     }
     Text {
         text: "Sun";
         color: "white";
-        font { family: fontName.name; pixelSize: 12 }
+        font { family: fontName.name; pixelSize: 12; bold: true; }
         y: 207;
         anchors.horizontalCenter: sunday.horizontalCenter;
     }
@@ -128,14 +119,14 @@ Item {
         id: monday
         text: "一";
         color: "white";
-        font { family: fontName.name; pixelSize: 14 }
+        font { family: fontName.name; pixelSize: 14; bold: true; }
         x: 228;
         y: 192;
     }
     Text {
         text: "Mon";
         color: "white";
-        font { family: fontName.name; pixelSize: 12 }
+        font { family: fontName.name; pixelSize: 12; bold: true; }
         y: 207;
         anchors.horizontalCenter: monday.horizontalCenter;
     }
@@ -144,14 +135,14 @@ Item {
         id: tuseday
         text: "二";
         color: "white";
-        font { family: fontName.name; pixelSize: 14 }
+        font { family: fontName.name; pixelSize: 14; bold: true; }
         x: 283;
         y: 192;
     }
     Text {
         text: "Tuse";
         color: "white";
-        font { family: fontName.name; pixelSize: 12 }
+        font { family: fontName.name; pixelSize: 12; bold: true; }
         y: 207;
         anchors.horizontalCenter: tuseday.horizontalCenter;
     }
@@ -160,14 +151,14 @@ Item {
         id: wednesday
         text: "三";
         color: "white";
-        font { family: fontName.name; pixelSize: 14 }
+        font { family: fontName.name; pixelSize: 14; bold: true; }
         x: 343;
         y: 192;
     }
     Text {
         text: "Wed";
         color: "white";
-        font { family: fontName.name; pixelSize: 12 }
+        font { family: fontName.name; pixelSize: 12; bold: true; }
         y: 207;
         anchors.horizontalCenter: wednesday.horizontalCenter;
     }
@@ -176,14 +167,14 @@ Item {
         id: thursday
         text: "四";
         color: "white";
-        font { family: fontName.name; pixelSize: 14 }
+        font { family: fontName.name; pixelSize: 14; bold: true; }
         x: 398;
         y: 192;
     }
     Text {
         text: "Thur";
         color: "white";
-        font { family: fontName.name; pixelSize: 12 }
+        font { family: fontName.name; pixelSize: 12; bold: true; }
         y: 207;
         anchors.horizontalCenter: thursday.horizontalCenter;
     }
@@ -192,14 +183,14 @@ Item {
         id: friday
         text: "五";
         color: "white";
-        font { family: fontName.name; pixelSize: 14 }
+        font { family: fontName.name; pixelSize: 14; bold: true; }
         x: 453;
         y: 192;
     }
     Text {
         text: "Fri";
         color: "white";
-        font { family: fontName.name; pixelSize: 12 }
+        font { family: fontName.name; pixelSize: 12; bold: true; }
         y: 207;
         anchors.horizontalCenter: friday.horizontalCenter;
     }
@@ -208,14 +199,14 @@ Item {
         id: saturday
         text: "六";
         color: "white";
-        font { family: fontName.name; pixelSize: 14 }
+        font { family: fontName.name; pixelSize: 14; bold: true; }
         x: 510;
         y: 192;
     }
     Text {
         text: "Sat";
         color: "white";
-        font { family: fontName.name; pixelSize: 12 }
+        font { family: fontName.name; pixelSize: 12; bold: true; }
         y: 207;
         anchors.horizontalCenter: saturday.horizontalCenter;
     }
@@ -281,7 +272,7 @@ Item {
         frameVisible: false;
         weekNumbersVisible: false;
         navigationBarVisible: false;
-        focus: true;
+        //focus: true;
 
         onHovered: {
             //console.log("onHovered: "+ Qt.formatDate(sysDate, "yyyy-MM-dd"));
@@ -297,20 +288,23 @@ Item {
             dayDelegate: Item {
                 id: dayItem
                 readonly property color sameMonthDateTextColor: "white";
-                readonly property color selectedDateTextColor: "black";
-                readonly property color differentMonthDateTextColor: "black";
+                readonly property color selectedDateTextColor: "gray";
+                readonly property color differentMonthDateTextColor: "gray";
                 readonly property color invalidDatecolor: "red";
 
                 Rectangle {
                     id: dayRec;
                     anchors.fill: parent;
-                    color: styleData.selected ? "lightgray":"gray";
+                    color: styleData.selected ? "#696969":"#363636";
                     border.width: 2;
-                    Image {
-                        source: "images/bg.png";
-                        width: 55;
-                        height: 73;
-                    }
+                    border.color: "black";
+                    //opacity: 1;
+//                    Image {
+//                        source: "images/bg.png";
+//                        width: 55;
+//                        height: 73;
+//                        opacity: 0.1;
+//                    }
                 }
 
                 function imageSource(num) {
@@ -326,46 +320,46 @@ Item {
                     height: 35;
                     source: imageSource(eventModel.getImageNum(styleData.date));
                 }
-                Image {
-                    id: event_2;
-                    width: 30;
-                    height: 30;
-                    visible: eventModel.eventsForDate(styleData.date).length > 1;
-                    source: imageSource(eventModel.getImageNum(styleData.date));
-                }
-                Image {
-                    id: event_3;
-                    width: 30;
-                    height: 30;
-                    anchors.left: event_2.right;
-                    anchors.leftMargin: -4;
-                    visible: eventModel.eventsForDate(styleData.date).length > 1;
-                    source: imageSource(eventModel.getImageNum(styleData.date));
-                }
-//                GridView {
-//                    id: eventsGridView;
-//                    anchors.fill: parent;
-//                    cellWidth: 27;
-//                    cellHeight: 25;
-
-//                    model: eventModel.eventsForDate(styleData.date);
-//                    delegate:  Image {
-//                        width: 27;
-//                        height: 25;
-
-//                        visible: eventModel.eventsForDate(styleData.date).length > 1;
-//                        source: imageSource(modelData.num);
-//                    }
+//                Image {
+//                    id: event_2;
+//                    width: 30;
+//                    height: 30;
+//                    visible: eventModel.eventsForDate(styleData.date).length > 1;
+//                    source: imageSource(eventModel.getImageNum(styleData.date));
 //                }
+//                Image {
+//                    id: event_3;
+//                    width: 30;
+//                    height: 30;
+//                    anchors.left: event_2.right;
+//                    anchors.leftMargin: -4;
+//                    visible: eventModel.eventsForDate(styleData.date).length > 1;
+//                    source: imageSource(eventModel.getImageNum(styleData.date));
+//                }
+                GridView {
+                    id: eventsGridView;
+                    anchors.fill: parent;
+                    cellWidth: 27;
+                    cellHeight: 25;
+
+                    model: eventModel.eventsForDate(styleData.date);
+                    delegate:  Image {
+                        width: 27;
+                        height: 25;
+
+                        visible: eventModel.eventsForDate(styleData.date).length > 1;
+                        source: imageSource(modelData.num);
+                    }
+                }
 
                 Label {
                     id: dayText;
                     text: styleData.date.getDate();
-                    font { family: fontName.name; pixelSize: 15 }
+                    font { family: fontName.name; pixelSize: 15; bold: true; }
                     anchors.bottom: parent.bottom;
                     anchors.right: parent.right;
                     anchors.bottomMargin: 2;
-                    anchors.rightMargin: 7;
+                    anchors.rightMargin: 5;
                     color: {
                         var color = invalidDatecolor;
                         if (styleData.valid) {
@@ -383,7 +377,7 @@ Item {
                 Connections {
                     target: ssTimer;
                     onTriggered: {
-                        dayRec.color = styleData.today ? "lightgray":"gray";
+                        dayRec.color = styleData.today ? "#696969":"#363636";
                         calendar.visibleMonth = Qt.formatDate(sysDate, "M")-1;
                         calendar.visibleYear = Qt.formatDate(sysDate, "yyyy");
                         m = parseInt(Qt.formatDate(sysDate, "M"))-1;
@@ -396,7 +390,7 @@ Item {
                 Connections {
                     target: todayTextArea;
                     onReleased: {
-                        dayRec.color = styleData.today ? "lightgray":"gray";
+                        dayRec.color = styleData.today ? "#696969":"#363636";
                         calendar.visibleMonth = Qt.formatDate(sysDate, "M")-1;
                         calendar.visibleYear = Qt.formatDate(sysDate, "yyyy");
                         m = parseInt(Qt.formatDate(sysDate, "M"))-1;
@@ -409,7 +403,7 @@ Item {
                 Connections {
                     target: todayArea;
                     onReleased: {
-                        dayRec.color = styleData.today ? "lightgray":"gray";
+                        dayRec.color = styleData.today ? "#696969":"#363636";
                         calendar.visibleMonth = Qt.formatDate(sysDate, "M")-1;
                         calendar.visibleYear = Qt.formatDate(sysDate, "yyyy");
                         m = parseInt(Qt.formatDate(sysDate, "M"))-1;
@@ -422,7 +416,7 @@ Item {
                 Connections {
                     target: monthArea;
                     onReleased: {
-                        dayRec.color = styleData.today ? "lightgray":"gray";
+                        dayRec.color = styleData.today ? "#696969":"#363636";
                         calendar.visibleMonth = Qt.formatDate(sysDate, "M")-1;
                         calendar.visibleYear = Qt.formatDate(sysDate, "yyyy");
                         m = parseInt(Qt.formatDate(sysDate, "M"))-1;
@@ -433,7 +427,7 @@ Item {
                 Connections {
                     target: calendar;
                     onReleased: {
-                        dayRec.color = styleData.selected ? "lightgray":"gray";
+                        dayRec.color = styleData.selected ? "#696969":"#363636";
                         if (styleData.selected) {
                             today.text = Qt.formatDate(styleData.date, "yy.MM.dd");
 /*
@@ -470,19 +464,20 @@ Item {
     Rectangle {
         width: 400-3;
         height: 150;
-        color: "gray";
+        color: "#363636";
         x: 150;
         y: 700;
         z: -1;
-        Image {
-            id: eventsBackgrand;
-            source: "images/bg.png";
-            width: 400-3;
-            height: 150;
-//            x: 150;
-//            y: 700;
-//            z: -1;
-        }
+//        Image {
+//            id: eventsBackgrand;
+//            source: "images/bg.png";
+//            width: 400-3;
+//            height: 150;
+//            opacity: 0.3;
+////            x: 150;
+////            y: 700;
+////            z: -1;
+//        }
     }
 
     Grid {
