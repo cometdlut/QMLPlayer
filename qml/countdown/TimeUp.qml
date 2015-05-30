@@ -15,7 +15,6 @@ Rectangle {
     function onSigTimeUp() {
         circleTimer1.running = true;
         circleTimer2.running = true;
-
     }
 
     FontLoader { id: fontName; source: "../Fonts/AgencyFB.ttf"; }

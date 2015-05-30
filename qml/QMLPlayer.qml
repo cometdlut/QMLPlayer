@@ -4,10 +4,10 @@ import QtQuick.Window 2.2
 Window {
     id: root
     width: 800
-    height: 600
+    height: 800
     title: Qt.application.name
     color: "#000000"
-    property bool debugMode: false
+    property bool debugMode: true
     visibility: debugMode ? "Windowed" : "FullScreen"
 
     property int highestZ: 0

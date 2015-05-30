@@ -81,5 +81,34 @@
         <file>qml/calendar/main.qml</file>
         <file>qml/calendar/Today.qml</file>
         <file>qml/calendar/Events.qml</file>
+        <file>qml/housecontrol/AircCnditioner.qml</file>
+        <file>qml/housecontrol/DynamicPaintCircle.qml</file>
+        <file>qml/housecontrol/HouseCtrlList.qml</file>
+        <file>qml/housecontrol/Light.qml</file>
+        <file>qml/housecontrol/main.qml</file>
+        <file>qml/housecontrol/Plug.qml</file>
+        <file>qml/housecontrol/Aircon/off.png</file>
+        <file>qml/housecontrol/Aircon/on.png</file>
+        <file>qml/housecontrol/Aircon/snow_off.png</file>
+        <file>qml/housecontrol/Aircon/snow_on.png</file>
+        <file>qml/housecontrol/Aircon/sun_off.png</file>
+        <file>qml/housecontrol/Aircon/sun_on.png</file>
+        <file>qml/housecontrol/Aircon/wind_off.png</file>
+        <file>qml/housecontrol/Aircon/wind_on.png</file>
+        <file>qml/housecontrol/light/colourlight_off.png</file>
+        <file>qml/housecontrol/light/colourlight_on.png</file>
+        <file>qml/housecontrol/light/smartlight_off.png</file>
+        <file>qml/housecontrol/light/smartlight_on.png</file>
+        <file>qml/housecontrol/menu/airclean_off.png</file>
+        <file>qml/housecontrol/menu/airclean_on.png</file>
+        <file>qml/housecontrol/menu/aircon_off.png</file>
+        <file>qml/housecontrol/menu/aircon_on.png</file>
+        <file>qml/housecontrol/menu/home.png</file>
+        <file>qml/housecontrol/menu/light_off.png</file>
+        <file>qml/housecontrol/menu/light_on.png</file>
+        <file>qml/housecontrol/menu/plug_off.png</file>
+        <file>qml/housecontrol/menu/plug_on.png</file>
+        <file>qml/housecontrol/plug/plug_off.png</file>
+        <file>qml/housecontrol/plug/plug_on.png</file>
     </qresource>
 </RCC>

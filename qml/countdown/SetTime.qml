@@ -29,6 +29,10 @@ Canvas {
     property var start : 0.0;
     property var canvasGradientactive: false;
 
+    function onSigSetTime() {
+        releasedTimer.running = true;
+    }
+
     FontLoader { id: fontName; source: "../Fonts/AgencyFB.ttf"; }
 
     Canvas {
@@ -125,9 +129,9 @@ Canvas {
         onPressed: {
             countDown.running = false;
             releasedTimer.running = false;
+            sigPauseCountDown();
             prsAngle = Math.atan(Math.abs(mouseX-r) / Math.abs(mouseY-r));
             //canvasDragtimer.running = true;
-
         }
 
         onPositionChanged: {
@@ -218,7 +222,6 @@ Canvas {
             if (min > 0 || sec > 0) {
                 sigStartCountDown(min, sec);
                 countDown.running = true;
-
             }
             releasedTimer.running = true;
         }
@@ -241,7 +244,7 @@ Canvas {
         y: 90;
         color: "white";
         font { family: fontName.name; pixelSize: 70 }
-        text:{min+":"+sec}
+        text:{ min+":"+sec }
         MouseArea {
             anchors.fill: parent;
             onClicked: {
@@ -250,7 +253,7 @@ Canvas {
                     if (min > 0 || sec > 0) {
                         sigPauseCountDown();
                         countDown.running = false;
-                        releasedTimer.running = false;
+                        releasedTimer.running = true;
                     }
                 }
                 else {
@@ -258,7 +261,6 @@ Canvas {
                     if (min > 0 || sec > 0) {
                         sigStartCountDown(min, sec);
                         countDown.running = true;
-
                     }
                     releasedTimer.running = true;
                 }
@@ -312,7 +314,7 @@ Canvas {
 
             if(min<10)  min = "0"+min;
             if(sec<10)  sec = "0"+sec;
-            */
+*/
 
 
             sec -= 1;
@@ -333,7 +335,6 @@ Canvas {
                 countDown.stop();
                 sigTimeUp();
             }
-
         }
     }
     Timer {

@@ -36,10 +36,6 @@ Rectangle {
         source: "images/remainingtime.png";
     }
 
-
-
-
-
     Text {
         id: remainingTimeShow;
         anchors.verticalCenter: hourglassImage.verticalCenter;

@@ -6,10 +6,9 @@ import QtQuick.Layouts 1.1
 Item {
     id: itemRoot;
     width: 300;
-    height: 300;
+    height: 200;
     smooth: true;
     antialiasing: true;
-
 
     MultiPointTouchArea {
         id: touchArea
@@ -52,15 +51,15 @@ Item {
     SetTime {
         id: setTime;
         //anchors.fill: parent;
-        width:300
-        height:300
+        width: 300;
+        height: 300;
         visible: false;
     }
     TimeUp {
         id: timeUp;
         //anchors.fill: parent;
-        //width:400
-        //height:400
+        width: 400;
+        height: 400;
         //radius: width/2;
         visible: false;
     }
@@ -79,22 +78,19 @@ Item {
     function onSigTimeUp() {
         timeUp.x = remainingTime.x;
         timeUp.y = remainingTime.y;
-        timeUp.width = 400;
-        timeUp.height = 400;
         timeUp.radius = timeUp.width/2;
         setTime.visible = false;
         remainingTime.visible = false;
         timeUp.visible = true;
     }
     function onSigReturn() {
-        itemRoot.width = 300;
-        itemRoot.height = 300;
         timeUp.visible = false;
         remainingTime.visible = true;
     }
 
     Component.onCompleted: {
         remainingTime.sigSetTime.connect(itemRoot.onSigSetTime);
+        remainingTime.sigSetTime.connect(setTime.onSigSetTime);
         setTime.sigReleasedTimer.connect(itemRoot.onSigReleasedTimer);
         setTime.sigStartCountDown.connect(remainingTime.onSigStartCountDown);
         setTime.sigPauseCountDown.connect(remainingTime.onSigPauseCountDown);

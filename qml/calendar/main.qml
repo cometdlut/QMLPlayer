@@ -53,7 +53,4 @@ Item {
         anchors.fill: parent;
         visible: true;
     }
-
-    Component.onCompleted: {
-    }
 }

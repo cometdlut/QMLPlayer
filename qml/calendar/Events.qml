@@ -92,7 +92,7 @@ Item {
 
     Rectangle {
         width: 400-3;
-        height: 33;
+        height: 35;
         x: 150;
         y: 190;
         z: -1;
@@ -111,7 +111,7 @@ Item {
         text: "Sun";
         color: "white";
         font { family: fontName.name; pixelSize: 12; bold: true; }
-        y: 207;
+        y: 210;
         anchors.horizontalCenter: sunday.horizontalCenter;
     }
 
@@ -127,7 +127,7 @@ Item {
         text: "Mon";
         color: "white";
         font { family: fontName.name; pixelSize: 12; bold: true; }
-        y: 207;
+        y: 210;
         anchors.horizontalCenter: monday.horizontalCenter;
     }
 
@@ -143,7 +143,7 @@ Item {
         text: "Tuse";
         color: "white";
         font { family: fontName.name; pixelSize: 12; bold: true; }
-        y: 207;
+        y: 210;
         anchors.horizontalCenter: tuseday.horizontalCenter;
     }
 
@@ -159,7 +159,7 @@ Item {
         text: "Wed";
         color: "white";
         font { family: fontName.name; pixelSize: 12; bold: true; }
-        y: 207;
+        y: 210;
         anchors.horizontalCenter: wednesday.horizontalCenter;
     }
 
@@ -175,7 +175,7 @@ Item {
         text: "Thur";
         color: "white";
         font { family: fontName.name; pixelSize: 12; bold: true; }
-        y: 207;
+        y: 210;
         anchors.horizontalCenter: thursday.horizontalCenter;
     }
 
@@ -191,7 +191,7 @@ Item {
         text: "Fri";
         color: "white";
         font { family: fontName.name; pixelSize: 12; bold: true; }
-        y: 207;
+        y: 210;
         anchors.horizontalCenter: friday.horizontalCenter;
     }
 
@@ -207,15 +207,15 @@ Item {
         text: "Sat";
         color: "white";
         font { family: fontName.name; pixelSize: 12; bold: true; }
-        y: 207;
+        y: 210;
         anchors.horizontalCenter: saturday.horizontalCenter;
     }
 
     Text {
         id: lastMonth
-        text: "<";
+        text: "‹";
         color: "white";
-        font { family: fontName.name; pixelSize: 20 }
+        font { family: fontName.name; pixelSize: 25 }
         anchors.verticalCenter: calendar.verticalCenter;
         x: 120;
         MouseArea {
@@ -235,9 +235,9 @@ Item {
     }
     Text {
         id: nextMonth
-        text: ">";
+        text: "›";
         color: "white";
-        font { family: fontName.name; pixelSize: 20 }
+        font { family: fontName.name; pixelSize: 25 }
         anchors.verticalCenter: calendar.verticalCenter;
         x: 570-3;
         MouseArea {
@@ -288,7 +288,7 @@ Item {
             dayDelegate: Item {
                 id: dayItem
                 readonly property color sameMonthDateTextColor: "white";
-                readonly property color selectedDateTextColor: "gray";
+                readonly property color selectedDateTextColor: "black";
                 readonly property color differentMonthDateTextColor: "gray";
                 readonly property color invalidDatecolor: "red";
 
@@ -298,13 +298,6 @@ Item {
                     color: styleData.selected ? "#696969":"#363636";
                     border.width: 2;
                     border.color: "black";
-                    //opacity: 1;
-//                    Image {
-//                        source: "images/bg.png";
-//                        width: 55;
-//                        height: 73;
-//                        opacity: 0.1;
-//                    }
                 }
 
                 function imageSource(num) {
@@ -468,16 +461,6 @@ Item {
         x: 150;
         y: 700;
         z: -1;
-//        Image {
-//            id: eventsBackgrand;
-//            source: "images/bg.png";
-//            width: 400-3;
-//            height: 150;
-//            opacity: 0.3;
-////            x: 150;
-////            y: 700;
-////            z: -1;
-//        }
     }
 
     Grid {

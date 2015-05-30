@@ -1,6 +1,4 @@
-QT += core gui widgets qml quick sensors sql multimedia websockets androidextras
-
-ANDROID_PACKAGE_SOURCE_DIR = $$PWD/android
+QT += core gui widgets qml quick sensors sql multimedia websockets
 
 QMAKE_CXXFLAGS += -std=c++11
 
@@ -12,26 +10,40 @@ MOBILITY =
 
 INCLUDEPATH += $$PWD/src
 HEADERS += \
+    src/event.h \
+    src/sqleventmodel.h \
+
+
+SOURCES += \
+    src/main.cpp\   
+    src/event.cpp \
+    src/sqleventmodel.cpp \
+
+
+RESOURCES += \
+    QMLPlayer.qrc
+
+RC_FILE = QMLPlayer.rc
+
+
+android {
+    QT += androidextras
+    OTHER_FILES += android/AndroidManifest.xml
+    ANDROID_PACKAGE_SOURCE_DIR = $$PWD/android
+
+HEADERS += \
     src/uart.h \
     src/uartthread.h \
     src/parsedata.h \
     src/hidapi.h \
-    src/event.h \
     src/qtquickcontrolsapplication.h \
-    src/csingleton.h \
-    src/sqleventmodel.h
+    src/csingleton.h
 
 SOURCES += \
-    src/main.cpp\
     src/uart.cpp \
     src/uartthread.cpp \
     src/parsedata.cpp \
-    src/event.cpp \
-    src/csingleton.cpp \
-    src/sqleventmodel.cpp
-
-RESOURCES += \
-    QMLPlayer.qrc
+    src/csingleton.cpp
 
 LIBS += $$PWD\libs/libuart.so
 
@@ -41,16 +53,9 @@ DISTFILES += \
     $$PWD/android/src/com/insmart/qmlplayer/BluetoothLeService.java \
     $$PWD/android/src/com/insmart/qmlplayer/SampleGattAttributes.java
 
-RC_FILE = QMLPlayer.rc
-
 OTHER_FILES += android/AndroidManifest.xml\
                 android/res/xml/device_filter.xml\
                 android/src/com/insmart/qmlplayer/Settings.java
-
-
-android {
-    OTHER_FILES += android/AndroidManifest.xml
-    ANDROID_PACKAGE_SOURCE_DIR = $$PWD/android
 }
 
 ios {

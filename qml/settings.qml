@@ -20,7 +20,6 @@ Rectangle {
         opacity: 0.6
         color: "lightblue"
 
-
         Text {
             id: addButtom1
             text: "计时"
@@ -41,7 +40,6 @@ Rectangle {
                     errorLabel.text = playComponent.errorString()
                     errorLabel.visible = true
                 }
-
             }
         }
     }
@@ -58,7 +56,6 @@ Rectangle {
 
         opacity: 0.6
         color: "lightpink"
-
 
         Text {
             id: addButtom2
@@ -80,7 +77,6 @@ Rectangle {
                     errorLabel.text = playComponent.errorString()
                     errorLabel.visible = true
                 }
-
             }
         }
     }
@@ -110,7 +106,7 @@ Rectangle {
             anchors.fill: parent
 
             onPressed: {
-                var componentUrl = "qrc:/qml/weather/weather.qml" // 必须加/，否则会提示找不到其他组件。不能用qrc:qml/weather
+                var componentUrl = "qrc:/qml/weather/weather.qml"   // 必须加/，否则会提示找不到其他组件。不能用qrc:qml/weather
                 var playComponent = Qt.createComponent(componentUrl, Component.PreferSynchronous, root)
                 if (playComponent.status === Component.Ready) {
                     playComponent.createObject(playArea)
@@ -133,7 +129,7 @@ Rectangle {
         anchors.right: parent.right
 
         opacity: 0.6
-        color: "lightblue"
+        color: "lightgray"
 
         Text {
             id: addButtom4
@@ -158,7 +154,6 @@ Rectangle {
             }
         }
     }
-
     Rectangle {
         id: rect5
         width: 50
@@ -170,7 +165,7 @@ Rectangle {
         anchors.right: parent.right
 
         opacity: 0.6
-        color: "lightgray"
+        color: "#FA8072"
 
         Text {
             id: addButtom5
@@ -195,7 +190,6 @@ Rectangle {
             }
         }
     }
-
     Rectangle {
         id: rect6
         width: 50
@@ -234,5 +228,41 @@ Rectangle {
         }
     }
 
+    Rectangle {
+        id: rect7
+        width: 50
+        height: width
+        anchors.topMargin: 20
+        radius: 10
+
+        anchors.top: rect6.bottom
+        anchors.right: parent.right
+
+        opacity: 0.6
+        color: "#00C78C"
+
+        Text {
+            id: addButtom7
+            text: "智控"
+            font.pixelSize: 20
+            anchors.centerIn: parent
+        }
+
+        MouseArea {
+            id: addArea7
+            anchors.fill: parent
+
+            onPressed: {
+                var componentUrl = "qrc:/qml/housecontrol/main.qml" // 必须加/，否则会提示找不到其他组件。不能用qrc:qml/weather
+                var playComponent = Qt.createComponent(componentUrl, Component.PreferSynchronous, root)
+                if (playComponent.status === Component.Ready) {
+                    playComponent.createObject(playArea)
+                } else {
+                    errorLabel.text = playComponent.errorString()
+                    errorLabel.visible = true
+                }
+            }
+        }
+    }
 
 }

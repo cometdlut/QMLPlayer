@@ -10,7 +10,7 @@ Item {
     height: 100;
 
     property date sysDate;
-    property var i: 5;  // 星期，手动设置
+    property var i: 6;  // 星期，手动设置
 
     signal sigSetEvent();
 

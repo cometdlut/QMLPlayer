@@ -5,6 +5,8 @@ import QtQuick.Layouts 1.1
 
 Item {
     id:itemRoot
+    x:50
+    y:500
     width: 50
     height: 50
     smooth: true
@@ -24,18 +26,6 @@ Item {
                 pressPos  = Qt.point(point.x, point.y)
             }
            itemRoot.z = ++root.highestZ
-
-            //点击弹出house ctrl List
-
-            if(housectrllist.visible==false) {
-                housectrllist.visible = true;
-            }
-            else {
-                housectrllist.visible = false;
-            }
-
-
-
         }
 
         onTouchUpdated: {
@@ -54,21 +44,39 @@ Item {
             }
             //itemRoot.z = 1;
         }
-
-
     }
 
     Image {
         id: houseimage;
-        anchors.fill: parent;
-        anchors.margins: 20;
+        anchors.fill: parent
+        width: 50;
+        height: 50;
         source: "menu/home.png";
+        MouseArea {
+            anchors.fill: parent;
+            drag.target: itemRoot;
+            onReleased: {
+                //点击弹出house ctrl List
+
+                if(housectrllist.visible==false) {
+                    housectrllist.visible = true;
+                    console.log("open housectrllist")
+                }
+                else {
+                    housectrllist.visible = false;
+                    console.log("close housectrllist")
+                }
+            }
+        }
     }
 
     HouseCtrlList {
         id:housectrllist;
-        x: 100
-        y: 100
+        anchors.horizontalCenter: parent.horizontalCenter
+        anchors.bottom: parent.top
+        anchors.bottomMargin: 100
+        width:200
+        height:300
         visible: false;
     }
 }

@@ -2,10 +2,13 @@
 #include <QQmlApplicationEngine>
 #include <QtQml>
 #include <QtQuick/QQuickView>
-#include <uartthread.h>
 #include <QIcon>
-#include "qtquickcontrolsapplication.h"
 #include "sqleventmodel.h"
+#include "qtquickcontrolsapplication.h"
+
+#ifdef andriod
+#include <uartthread.h>
+#endif
 
 int main(int argc, char *argv[])
 {
@@ -17,12 +20,14 @@ int main(int argc, char *argv[])
     app.setOrganizationName("insmart");
     app.setOrganizationDomain("com.insmart.qmlplayer");
 
+#ifdef andriod
     // 首先注册一下类
     qmlRegisterType<UartThread>(
                 "UartT",		    // 统一资源标识符
                 1,                  // 主版本
                 0,					// 次版本
                 "UartThread" );		// QML类名称
+#endif
 
     qmlRegisterType<SqlEventModel>("org.qtproject.examples.calendar", 1, 0, "SqlEventModel");
 
