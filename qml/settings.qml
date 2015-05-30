@@ -265,4 +265,41 @@ Rectangle {
         }
     }
 
+    Rectangle {
+        id: rect8
+        width: 50
+        height: width
+        anchors.topMargin: 20
+        radius: 10
+
+        anchors.top: rect7.bottom
+        anchors.right: parent.right
+
+        opacity: 0.6
+        color: "#00C78C"
+
+        Text {
+            id: addButtom8
+            text: "留言"
+            font.pixelSize: 20
+            anchors.centerIn: parent
+        }
+
+        MouseArea {
+            id: addArea8
+            anchors.fill: parent
+
+            onPressed: {
+                var componentUrl = "qrc:/qml/housecontrol/main.qml" // 必须加/，否则会提示找不到其他组件。不能用qrc:qml/weather
+                var playComponent = Qt.createComponent(componentUrl, Component.PreferSynchronous, root)
+                if (playComponent.status === Component.Ready) {
+                    playComponent.createObject(playArea)
+                } else {
+                    errorLabel.text = playComponent.errorString()
+                    errorLabel.visible = true
+                }
+            }
+        }
+    }
+
 }
